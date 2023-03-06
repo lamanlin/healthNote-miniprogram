@@ -1,0 +1,1 @@
+<view><button open-type="getUserInfo" bindgetuserinfo="{{a}}">登录</button></view>

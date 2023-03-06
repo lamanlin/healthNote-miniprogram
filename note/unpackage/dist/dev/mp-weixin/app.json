@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/chart/index",
+    "pages/me/index",
+    "pages/home/addPress",
+    "pages/home/addSuger",
+    "pages/home/addBlood"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#c7c7c7",
+    "selectedColor": "#13227a",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home-ed.png",
+        "text": "新增"
+      },
+      {
+        "pagePath": "pages/chart/index",
+        "iconPath": "static/tabbar/shuju.png",
+        "selectedIconPath": "static/tabbar/shuju-ed.png",
+        "text": "报表"
+      },
+      {
+        "pagePath": "pages/me/index",
+        "iconPath": "static/tabbar/me.png",
+        "selectedIconPath": "static/tabbar/me-ed.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "演示定位能力"
+    }
+  },
+  "usingComponents": {}
+}

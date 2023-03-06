@@ -1,0 +1,74 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "健康记事本",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/chart/index",
+			"style": {
+				"navigationBarTitleText": "数据报表",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/me/index",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/home/addPress",
+			"style": {
+				"navigationBarTitleText": "新增血压记录"
+			}
+		},
+		{
+			"path": "pages/home/addSuger",
+			"style": {
+				"navigationBarTitleText": "新增血糖记录"
+			}
+		},
+		{
+			"path": "pages/home/addBlood",
+			"style": {
+				"navigationBarTitleText": "新增血常规记录"
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#c7c7c7",
+		"selectedColor": "#13227a",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/home/index",
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home-ed.png",
+				"text": "新增"
+			},
+			{
+				"pagePath": "pages/chart/index",
+				"iconPath": "static/tabbar/shuju.png",
+				"selectedIconPath": "static/tabbar/shuju-ed.png",
+				"text": "报表"
+			},
+			{
+				"pagePath": "pages/me/index",
+				"iconPath": "static/tabbar/me.png",
+				"selectedIconPath": "static/tabbar/me-ed.png",
+				"text": "我的"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
