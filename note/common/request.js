@@ -1,7 +1,5 @@
-let token;
-
-
-function call(option) {
+let token = JSON.parse(uni.getStorageSync('userInfo') || '{}').token
+export default function(option) {
 	return new Promise((resolve, reject) => {
 		if (!option.data) option.data = {};
 		if (token) option.data.token = token;
@@ -24,8 +22,4 @@ function call(option) {
 			}
 		});
 	});
-}
-
-module.exports = {
-	call: call
 }

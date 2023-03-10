@@ -1,15 +1,18 @@
 <template>
 	<view class="page home-page">
-		<template v-if="dataList.length===0">
-			<timelineItem v-for="item in dataList" :index="item.id" :leftTime='item.date'>
+		<template v-if="state.dataList.length>0">
+			<timelineItem v-for="item in state.dataList" :key="item._id" :index="item._id"
+				:leftTime='formatTime(item.data.create_time)'>
 				<view class="tripItem">
 					<view class="left">
-						<view class="title uni-radius">{{item.text}}</view>
-						<view class="tips text-two-ellipsis"><text class="uni-base-color">备注：</text>{{item.remark}}</view>
+						<view class="title uni-radius">{{item.data_type}}</view>
+						<view class="tips text-two-ellipsis"><text
+								class="uni-base-color">备注：</text>{{item.data.comment}}
+						</view>
 					</view>
 					<view class="right">
 						<text class="number-box uni-radius">
-							{{item.data}}
+							{{item.data.high}}
 						</text>
 						<uni-icons class="uni-ml-2" type="forward" color="#18bc37"></uni-icons>
 					</view>
@@ -17,103 +20,47 @@
 			</timelineItem>
 		</template>
 		<template v-else>
-			<emty></emty>
+			<emty @onClick="goPage()"></emty>
 		</template>
-		<uni-fab :pattern="pattern" :content="addBtnContent" horizontal="right" vertical="bottom" @trigger="trigger">
-		</uni-fab>
 	</view>
 </template>
-
 <script setup>
+	import request from '../../common/request.js'
+	import {
+		formatTime
+	} from '../../common/util.js'
+	import {
+		reactive,
+		onMounted,
+		toRaw
+	} from 'vue'
+	import {
+		onShow
+	} from "@dcloudio/uni-app";
 	import emty from '../../components/emty/index.vue'
-	import timeline from '../../components/chenbin-timeline/timeLine.vue'
-	import timelineItem from '../../components/chenbin-timeline/timelineItem.vue'
-	const pattern = {
-		color: '#3a3a3a',
-		backgroundColor: '#fff',
-		selectedColor: '#18bc37',
-		buttonColor: '#18bc37',
-		iconColor: '#fff'
-	}
-	const addBtnContent = [{
-			iconPath: '../../static/blood.png',
-			selectedIconPath: '../../static/blood1.png',
-			text: '血常规',
-			active: false
-		},
-		{
-			iconPath: '../../static/press.png',
-			selectedIconPath: '../../static/press.png',
-			text: '血压',
-			active: false
-		},
-		{
-			iconPath: '../../static/suger.png',
-			selectedIconPath: '../../static/suger.png',
-			text: '血糖',
-			active: false
-		},
-	]
-	const list = [{
-			text: '血压',
-			color: 'uni-success-disable-bg'
-		},
-		{
-			text: '血糖',
-			color: 'uni-error-disable-bg'
-		},
-		{
-			text: '血常规',
-			color: 'uni-info-disable-bg'
-		},
-	]
-	const dataList = [{
-		id: 0,
-		type: 0,
-		text: '血常规',
-		date: '2023-03-05 10:22',
-		remark: 'fg地方好地dfhdfhdffh三个复旦复华方好',
-		data: '133333333823.55'
-	}]
-
-	function trigger(val) {
-		console.log(val);
-		let url = ''
-		switch (val.index) {
-			case 1:
-				url = './addPress'
-				break;
-			case 2:
-				url = './addSuger'
-				break;
-			case 0:
-				url = './addBlood'
-				break;
-			default:
-				break;
-		}
-		uni.navigateTo({
-			url
+	import timelineItem from '../../components/timeline/timelineItem.vue'
+	const state = reactive({
+		dataList: []
+	})
+	onShow(() => {
+		request({
+			name: 'dataList',
+			data: {
+				action: 'get'
+			},
+			success: (res) => {
+				console.log(res.result)
+				res.result.forEach(item => {
+					item.data.create_time = formatTime(item?.data?.create_time)
+				})
+				state.dataList.push(...res.result)
+			}
 		})
-	}
+	})
 
-	function goPage(text) {
-		let url = ''
-		switch (text) {
-			case '血压':
-				url = './addPress'
-				break;
-			case '血糖':
-				url = './addSuger'
-				break;
-			case '血常规':
-				url = './addBlood'
-				break;
-			default:
-				break;
-		}
-		uni.navigateTo({
-			url
+	function goPage() {
+		uni.redirectTo({
+			url: '/pages/add/index'
 		})
 	}
 </script>
@@ -169,6 +116,7 @@
 			background: $uni-success;
 			color: #fff;
 		}
+
 		.text-two-ellipsis {
 			overflow: hidden;
 			text-overflow: ellipsis;

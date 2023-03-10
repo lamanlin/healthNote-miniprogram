@@ -1,0 +1,1 @@
+"use strict";const o=require("../../common/vendor.js"),e={methods:{onTap(){this.$emit("onClick")}}};const n=o._export_sfc(e,[["render",function(e,n,t,c,r,s){return{a:o.o(((...o)=>s.onTap&&s.onTap(...o)))}}],["__scopeId","data-v-02d55c43"]]);wx.createComponent(n);

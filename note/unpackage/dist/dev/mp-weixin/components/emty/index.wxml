@@ -1,1 +1,1 @@
-<view class="emty-wrap data-v-a625a927"><image class="data-v-a625a927" src="/static/emty.png"></image><text class="uni-secondary-color data-v-a625a927">暂无数据，请添加数据</text></view>
+<view class="emty-wrap data-v-a625a927"><image class="data-v-a625a927" src="/static/emty.png"></image><view class="uni-secondary-color data-v-a625a927"> 暂无数据，<text class="data-v-a625a927" style="text-decoration:underline dotted;color:#dd6642" bindtap="{{a}}">请添加数据</text></view></view>

@@ -3780,43 +3780,43 @@ function injectHook(type, hook, target = currentInstance, prepend = false) {
     warn(`${apiName} is called when there is no active component instance to be associated with. Lifecycle injection APIs can only be used during execution of setup().`);
   }
 }
-const createHook = (lifecycle) => (hook, target = currentInstance) => (
+const createHook$1 = (lifecycle) => (hook, target = currentInstance) => (
   // post-create lifecycle registrations are noops during SSR (except for serverPrefetch)
   (!isInSSRComponentSetup || lifecycle === "sp") && injectHook(lifecycle, (...args) => hook(...args), target)
 );
-const onBeforeMount = createHook(
+const onBeforeMount = createHook$1(
   "bm"
   /* LifecycleHooks.BEFORE_MOUNT */
 );
-const onMounted = createHook(
+const onMounted = createHook$1(
   "m"
   /* LifecycleHooks.MOUNTED */
 );
-const onBeforeUpdate = createHook(
+const onBeforeUpdate = createHook$1(
   "bu"
   /* LifecycleHooks.BEFORE_UPDATE */
 );
-const onUpdated = createHook(
+const onUpdated = createHook$1(
   "u"
   /* LifecycleHooks.UPDATED */
 );
-const onBeforeUnmount = createHook(
+const onBeforeUnmount = createHook$1(
   "bum"
   /* LifecycleHooks.BEFORE_UNMOUNT */
 );
-const onUnmounted = createHook(
+const onUnmounted = createHook$1(
   "um"
   /* LifecycleHooks.UNMOUNTED */
 );
-const onServerPrefetch = createHook(
+const onServerPrefetch = createHook$1(
   "sp"
   /* LifecycleHooks.SERVER_PREFETCH */
 );
-const onRenderTriggered = createHook(
+const onRenderTriggered = createHook$1(
   "rtg"
   /* LifecycleHooks.RENDER_TRIGGERED */
 );
-const onRenderTracked = createHook(
+const onRenderTracked = createHook$1(
   "rtc"
   /* LifecycleHooks.RENDER_TRACKED */
 );
@@ -7053,39 +7053,52 @@ const pages = [
   {
     path: "pages/chart/index",
     style: {
-      navigationBarTitleText: "数据报表",
+      navigationBarTitleText: "数据分析",
       enablePullDownRefresh: false
     }
   },
   {
-    path: "pages/me/index",
+    path: "pages/news/index",
     style: {
-      navigationBarTitleText: "个人中心",
+      navigationBarTitleText: "新闻资讯",
       enablePullDownRefresh: false
     }
   },
   {
-    path: "pages/home/addPress",
+    path: "pages/login/index",
+    style: {
+      navigationBarTitleText: "登录注册",
+      enablePullDownRefresh: false
+    }
+  },
+  {
+    path: "pages/add/index",
+    style: {
+      navigationBarTitleText: "健康记事本"
+    }
+  },
+  {
+    path: "pages/add/addPress",
     style: {
       navigationBarTitleText: "新增血压记录"
     }
   },
   {
-    path: "pages/home/addSuger",
+    path: "pages/add/addSuger",
     style: {
       navigationBarTitleText: "新增血糖记录"
     }
   },
   {
-    path: "pages/home/addBlood",
+    path: "pages/add/addCustom",
     style: {
-      navigationBarTitleText: "新增血常规记录"
+      navigationBarTitleText: "新增自定义项目"
     }
   }
 ];
 const tabBar = {
   color: "#c7c7c7",
-  selectedColor: "#13227a",
+  selectedColor: "#dd6642",
   borderStyle: "black",
   backgroundColor: "#ffffff",
   list: [
@@ -7093,6 +7106,12 @@ const tabBar = {
       pagePath: "pages/home/index",
       iconPath: "static/tabbar/home.png",
       selectedIconPath: "static/tabbar/home-ed.png",
+      text: "主页"
+    },
+    {
+      pagePath: "pages/add/index",
+      iconPath: "static/tabbar/add.png",
+      selectedIconPath: "static/tabbar/add-ed.png",
       text: "新增"
     },
     {
@@ -7102,16 +7121,16 @@ const tabBar = {
       text: "报表"
     },
     {
-      pagePath: "pages/me/index",
-      iconPath: "static/tabbar/me.png",
-      selectedIconPath: "static/tabbar/me-ed.png",
-      text: "我的"
+      pagePath: "pages/news/index",
+      iconPath: "static/tabbar/news.png",
+      selectedIconPath: "static/tabbar/news-ed.png",
+      text: "资讯"
     }
   ]
 };
 const globalStyle = {
   navigationBarTextStyle: "black",
-  navigationBarTitleText: "uni-app",
+  navigationBarTitleText: "健康记事本",
   navigationBarBackgroundColor: "#F8F8F8",
   backgroundColor: "#F8F8F8"
 };
@@ -7402,7 +7421,7 @@ const y = true, _ = "mp-weixin", v = m(
       "spaceId": "mp-32701975-c6c1-4ba8-99e6-9a66aba1a070"
     }
   ]
-), S = _, k = m('{\n    "address": [\n        "127.0.0.1",\n        "192.168.3.193"\n    ],\n    "debugPort": 9001,\n    "initialLaunchType": "local",\n    "servePort": 7001,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/360极速浏览器X下载/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), I = m('[{"provider":"aliyun","spaceName":"health-note","spaceId":"mp-32701975-c6c1-4ba8-99e6-9a66aba1a070","clientSecret":"jTsNhuj/PxX2YwPFabGj/g==","endpoint":"https://api.next.bspapp.com"}]') || [];
+), S = _, k = m('{\n    "address": [\n        "127.0.0.1",\n        "192.168.3.193"\n    ],\n    "debugPort": 9000,\n    "initialLaunchType": "local",\n    "servePort": 7000,\n    "skipFiles": [\n        "<node_internals>/**",\n        "D:/360极速浏览器X下载/HBuilderX/plugins/unicloud/**/*.js"\n    ]\n}\n'), I = m('[{"provider":"aliyun","spaceName":"health-note","spaceId":"mp-32701975-c6c1-4ba8-99e6-9a66aba1a070","clientSecret":"jTsNhuj/PxX2YwPFabGj/g==","endpoint":"https://api.next.bspapp.com"}]') || [];
 let T = "";
 try {
   T = "__UNI__26546D0";
@@ -9938,7 +9957,7 @@ let statConfig = {
   appid: "__UNI__26546D0"
 };
 let titleJsons = {};
-titleJsons = { "pages/home/index": "健康记事本", "pages/chart/index": "数据报表", "pages/me/index": "个人中心", "pages/home/addPress": "新增血压记录", "pages/home/addSuger": "新增血糖记录", "pages/home/addBlood": "新增血常规记录" };
+titleJsons = { "pages/home/index": "健康记事本", "pages/chart/index": "数据分析", "pages/news/index": "新闻资讯", "pages/login/index": "登录注册", "pages/add/index": "健康记事本", "pages/add/addPress": "新增血压记录", "pages/add/addSuger": "新增血糖记录", "pages/add/addCustom": "新增自定义项目" };
 const UUID_KEY = "__DC_STAT_UUID";
 const UUID_VALUE = "__DC_UUID_VALUE";
 function getUuid() {
@@ -10989,6 +11008,10 @@ function main() {
   }
 }
 main();
+const createHook = (lifecycle) => (hook, target = getCurrentInstance()) => {
+  !isInSSRComponentSetup && injectHook(lifecycle, hook, target);
+};
+const onShow = /* @__PURE__ */ createHook(ON_SHOW);
 exports.Es = Es;
 exports._export_sfc = _export_sfc;
 exports.createSSRApp = createSSRApp;
@@ -10999,6 +11022,7 @@ exports.initVueI18n = initVueI18n;
 exports.n = n$1;
 exports.o = o$1;
 exports.onMounted = onMounted;
+exports.onShow = onShow;
 exports.p = p$1;
 exports.reactive = reactive;
 exports.ref = ref;
@@ -11006,3 +11030,4 @@ exports.resolveComponent = resolveComponent;
 exports.s = s$1;
 exports.sr = sr;
 exports.t = t$1;
+exports.unref = unref;

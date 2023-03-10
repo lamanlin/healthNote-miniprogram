@@ -1,0 +1,1 @@
+"use strict";exports.formatTime=function(r){if("number"!=typeof r||r<0)return r;var t=parseInt(r/3600);return r%=3600,[t,parseInt(r/60),r%=60].map((function(r){return(r=r.toString())[1]?r:"0"+r})).join(":")};

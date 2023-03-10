@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
 		nickName
 	} = event
 	const URL =
-		`https://api.weixin.qq.com/sns/jscode2session?appid=${appid}&secret=${secret}&js_code=${code}&grant_type=authorization_code`
+		`https://api.weixin.qq.com/sns/jscode2session?appid=${appId}&secret=${appSecret}&js_code=${code}&grant_type=authorization_code`
 	const requestOptions = {
 		method: 'GET',
 		dataType: 'json'

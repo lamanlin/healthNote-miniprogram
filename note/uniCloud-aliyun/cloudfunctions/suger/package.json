@@ -1,0 +1,7 @@
+{
+  "name": "suger",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}
